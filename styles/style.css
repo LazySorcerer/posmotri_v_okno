@@ -18,7 +18,7 @@ html {
   background-color: #1b1919;
   display: flex;
   justify-content: center;
-  align-items: center; /*добавить*/
+  align-items: center;
 }
 
 h1,
@@ -51,9 +51,7 @@ ol {
 }
 
 .content {
-  /* margin: 133px;убрать */
   display: grid;
-  height: 534px;
   grid-template-columns: 711px 399px;
   justify-content: center;
   align-items: end;
@@ -72,7 +70,6 @@ ol {
 
 .result__video {
   width: 100%;
-  height: 386px;
   object-fit: cover;
 }
 
@@ -81,7 +78,6 @@ ol {
   grid-template-columns: 225px 212px 194px;
   justify-content: space-between;
   align-items: end;
-  height: 54px;
 }
 
 .search-form__fieldset {
@@ -147,7 +143,7 @@ ol {
 
 .search-form__checkbox:checked + .search-form__pseudo-checkbox::before {
   content: "";
-  position: absolute;
+  position: relative;
   display: block;
   width: 14px;
   height: 14px;
@@ -224,6 +220,7 @@ ol {
   width: 100%;
   height: 298px;
   overflow: hidden scroll;
+  scrollbar-gutter: stable;
   scrollbar-color: grey transparent;
   scrollbar-width: thin;
 }
@@ -233,25 +230,31 @@ ol {
   text-underline-offset: 2px;
 }
 
-.content__list-item:focus {
-  outline: none;
-}
-
-.content__list-item:focus-visible {
-  outline-color: #fff;
-  outline-width: 1px;
-  outline-offset: 2px;
-  outline-style: solid;
-}
-
 .content__card-link {
   display: block;
   text-decoration: none;
   margin: 2px;
 }
 
+.content__card-link:focus {
+  outline: none;
+}
+
+.content__card-link:focus-visible {
+  outline-color: #fff;
+  outline-width: 1px;
+  outline-offset: 0;
+  outline-style: solid;
+}
+
 .content__card-link_current {
   background-color: rgb(84, 80, 80);
+}
+
+.content__video-card {
+  width: 99.5%;
+  display: flex;
+  min-height: 107px;
 }
 
 .content__video-card:active {
@@ -259,7 +262,8 @@ ol {
 }
 
 .content__video-card-description-container {
-  text-overflow: ellipsis;
+  flex-grow: 1;
+  min-width: 0;
 }
 
 .content__video-card-title {
@@ -268,7 +272,10 @@ ol {
   font-weight: 700;
   text-transform: uppercase;
   color: #fff;
-  padding-left: 2px;
+  flex-basis: auto;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  overflow: hidden;
 }
 
 .content__video-card-description {
@@ -279,13 +286,8 @@ ol {
   padding-left: 2px;
 }
 
-.content__video-card {
-  display: grid;
-  grid-template-columns: 200px 194px;
-  height: 107px;
-}
-
 .content__video-card-thumbnail {
+  flex-shrink: 0;
   align-self: center;
   width: 194px;
   height: 103px;
@@ -293,6 +295,7 @@ ol {
 }
 
 .more-button {
+  width: 98%;
+  margin-bottom: 3px;
   margin-left: 3px;
-  margin-right: 3px;
 }
